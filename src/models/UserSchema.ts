@@ -4,14 +4,14 @@ export interface IUser extends Document {
   username: string;
   firstName: string;
   lastName: string;
-  password: string;
+  password?: string;
 }
 
 const UserSchema = new Schema(
   {
     username: {
       type: String,
-      trim: true
+      trim: true,
     },
     firstName: {
       type: String,
