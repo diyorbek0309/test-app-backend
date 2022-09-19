@@ -4,7 +4,6 @@ import { APIResponse } from '../lib/APIResponse';
 export const validate = (schema: any) => {
   return (req: Request, res: Response, next: NextFunction) => {
     const data: any = {};
-
     if (req.body && Object.keys(req.body).length > 0) {
       data.body = req.body;
     }

@@ -53,7 +53,6 @@ export default class {
       }
       const existingUser = { ...user };
       delete existingUser.password;
-
       const tokens = await this.auth.jwtSign(existingUser);
 
       const userData = {
