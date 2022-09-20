@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
-import User, { IUser } from '../models/UserSchema';
+import User from '../models/UserSchema';
+import { IUser } from '../types/iSchemas';
 import { APIResponse } from '../lib/APIResponse';
 import Auth from '../lib/Auth';
 import { genSalt, hash } from 'bcryptjs';

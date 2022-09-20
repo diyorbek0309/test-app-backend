@@ -1,6 +1,7 @@
 import { compare } from 'bcryptjs';
 import { sign, decode, verify } from 'jsonwebtoken';
-import Token, { IToken } from '../models/TokenSchema';
+import Token from '../models/TokenSchema';
+import { IToken } from '../types/iSchemas';
 
 export default class {
   decodeToken = async (token: string) => decode(token);
@@ -60,8 +61,8 @@ export default class {
     }
   };
   jwtSign = async (user: any): Promise<IToken> => {
-    const expiresInAccessToken = process.env.JWT_ACCESS_TOKEN_T || '864000';
-    const expiresInRefreshToken = process.env.JWT_REFRESH_TOKEN_T || '864000';
+    const expiresInAccessToken = process.env.JWT_ACCESS_TOKEN_T!;
+    const expiresInRefreshToken = process.env.JWT_REFRESH_TOKEN_T!;
     try {
       const accessToken = await this.createToken(user, parseInt(expiresInAccessToken, 10));
       const refreshToken = await this.createToken(user, parseInt(expiresInRefreshToken, 10));

@@ -1,11 +1,5 @@
-import mongoose, { Schema, Document } from 'mongoose';
-import { IUser } from './UserSchema';
-export interface IToken extends Document {
-  accessToken: string;
-  refreshToken: string;
-  user: IUser;
-  expiredAt: number;
-}
+import mongoose, { Schema } from 'mongoose';
+import { IToken } from '../types/iSchemas';
 
 const TokenSchema: any = new Schema(
   {
