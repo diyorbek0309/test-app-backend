@@ -1,13 +1,13 @@
 import mongoose from 'mongoose';
 
 export default class Database {
-  url: string = process.env.MONGO_URI || ' ';
+  url: string = process.env.MONGO_URI!;
 
   constructor() {
     console.log('DATABASE URL:', this.url);
   }
 
-  connect() {
+  mongooseConnect() {
     return mongoose.connect(this.url, (error) => {
       if (error) {
         console.log('MongoDB Connection error:', error);
@@ -15,13 +15,15 @@ export default class Database {
       }
     });
   }
-}
 
-try {
-  const db = new Database();
-  db.connect();
+  dbConnect() {
+    try {
+      const db = new Database();
+      db.mongooseConnect();
 
-  console.log('Database connection initialized.');
-} catch (error) {
-  throw new Error(`DB connection error: ${error}`);
+      console.log('Database connection initialized');
+    } catch (error) {
+      throw new Error(`DB connection error: ${error}`);
+    }
+  }
 }

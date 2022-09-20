@@ -44,7 +44,7 @@ export default class {
       if (!user) {
         return new APIResponse(res).error(400, 'INVALID_CREDINTIALS');
       }
-      const password: string = user.password || '';
+      const password: string = user.password!;
       const checkUser: boolean | Error = await this.auth.checkUserPassword(data.password, password);
 
       if (!checkUser) {

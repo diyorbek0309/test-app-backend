@@ -23,7 +23,7 @@ export default class {
       delete user.iat;
       delete user.exp;
 
-      req['user'] = { ...user };
+      req.user = { ...user };
       next();
     } catch (error) {
       console.error(error);
