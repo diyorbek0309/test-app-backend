@@ -16,3 +16,12 @@ export default class Database {
     });
   }
 }
+
+try {
+  const db = new Database();
+  db.connect();
+
+  console.log('Database connection initialized.');
+} catch (error) {
+  throw new Error(`DB connection error: ${error}`);
+}

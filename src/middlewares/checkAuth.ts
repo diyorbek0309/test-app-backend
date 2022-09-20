@@ -25,9 +25,9 @@ export default class {
 
       req['user'] = { ...user };
       next();
-    } catch (e) {
-      console.error(e);
-      next(e);
+    } catch (error) {
+      console.error(error);
+      next(error);
     }
   };
 }

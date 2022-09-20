@@ -14,7 +14,6 @@ export default class {
       const existingUser: IUser | null = await User.findOne({
         username: req.body.username,
       });
-      console.log(req.body);
 
       if (existingUser) {
         return new APIResponse(res).error(400, 'USER_EXIST');
@@ -28,8 +27,8 @@ export default class {
       delete savedUser.password;
 
       return new APIResponse(res).success(savedUser);
-    } catch (e) {
-      return new APIResponse(res).error(500, 'SERVER_ERROR', e);
+    } catch (error) {
+      return new APIResponse(res).error(500, 'SERVER_ERROR', error);
     }
   };
 
@@ -63,9 +62,8 @@ export default class {
         },
       };
       return new APIResponse(res).success(userData);
-    } catch (e) {
-      new APIResponse(res).error(500, 'SERVER_ERROR', e);
-      throw new Error(`Login eror: ${e}`);
+    } catch (error) {
+      return new APIResponse(res).error(500, 'SERVER_ERROR', error);
     }
   };
 }
